@@ -82,12 +82,10 @@ class DBStorage:
         self.__session.remove()
 
     def get(self, cls, id):
-        """Retrieve an object"""
-        if cls is not None and type(cls) is str and id is not None and\
-           type(id) is str and cls in name2class:
-            cls = name2class[cls]
-            result = self.__session.query(cls).filter(cls.id == id).first()
-            return result
+        """Retrieve object by class and id
+        """
+        if cls in classes.values():
+            return self.__session.query(cls).filter(cls.id == id).first()
         else:
             return None
 
