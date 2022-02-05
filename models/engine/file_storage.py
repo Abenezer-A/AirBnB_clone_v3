@@ -76,6 +76,3 @@ class FileStorage:
             return obj
         else:
             return None
-    def count(self, cls=None):
-        
-        return len(self.all(cls))
